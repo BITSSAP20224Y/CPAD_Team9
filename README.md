@@ -1,9 +1,9 @@
 # CPAD_Team9
 
-Ritika Dey – 2022HS70006
-Sakshi Bansal - 2022HS70037
-Riya Deb - 2022HS70001
-Srushti Torgal - 2022HS700
+Ritika Dey – 2022HS70006, 
+Sakshi Bansal - 2022HS70037, 
+Riya Deb - 2022HS70001, 
+Srushti Torgal - 2022HS700  ,
 Tuhin Ghosh - 2022HS70022
 
 # Plant Disease Classification App
