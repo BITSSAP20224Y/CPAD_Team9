@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Object Detection App</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+
+    <script>
+      let modelPromise = cocoSsd.load();
+
+      async function runDetectionWithBase64(base64Data) {
+        const model = await modelPromise;
+        const img = document.getElementById('inputImage');
+        if (!img) {
+          console.error("Image element with id 'inputImage' not found!");
+          return;
+        }
+        img.src = base64Data;
+        img.onload = async () => {
+          const predictions = await model.detect(img);
+          window.flutter_inject_predictions(JSON.stringify(predictions));
+        };
+        img.style.display = "block";
+      }
+
+      // Set a fallback
+      window.flutter_inject_predictions = function(_) {
+        console.warn("flutter_inject_predictions not yet bound.");
+      };
+    </script>
+  </head>
+
+  <body>
+    <!-- HTML image container -->
+    <img id="inputImage" style="display:none;" />
+    <script src="main.dart.js"></script>
+  </body>
+</html>
